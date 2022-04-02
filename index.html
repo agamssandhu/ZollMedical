@@ -1,0 +1,385 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css" media="screen">
+    * {
+        font-family: Helvetica;
+    }
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        margin: 0;
+        font-weight: 100;
+        text-transform: uppercase;
+    }
+
+    .zoll-container {
+        background: -webkit-linear-gradient(290deg, #f900a5, #00a5f9, #a5f900);
+        background: -moz-linear-gradient(290deg, #f900a5, #00a5f9, #a5f900);
+        background: -o-linear-gradient(290deg, #f900a5, #00a5f9, #a5f900);
+        background: linear-gradient(290deg, #f900a5, #00a5f9, #a5f900);
+        background-size: 400% 400%;
+        -webkit-animation: Gradient 15s ease 0s infinite normal;
+        -moz-animation: Gradient 15s ease 0s infinite normal;
+        animation: Gradient 15s ease 0s infinite normal;
+        padding-bottom: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    thead {
+        font-family: Helvetica;
+        background: -webkit-linear-gradient(290deg, #f900a5, #00a5f9, #a5f900);
+        background: -o-linear-gradient(290deg, #f900a5, #00a5f9, #a5f900);
+        background: linear-gradient(290deg, #f900a5, #00a5f9, #a5f900);
+        background-attachment: fixed;
+        background-size: 400% 400%;
+        -webkit-animation: Gradient 15s ease 0s infinite normal;
+        -moz-animation: Gradient 15s ease 0s infinite normal;
+        animation: Gradient 15s ease 0s infinite normal;
+    }
+
+    @-webkit-keyframes Gradient {
+        0% {
+            background-position: 0% 50%
+        }
+        50% {
+            background-position: 100% 50%
+        }
+        100% {
+            background-position: 0% 50%
+        }
+    }
+
+    @keyframes Gradient {
+        0% {
+            background-position: 0% 50%
+        }
+        50% {
+            background-position: 100% 50%
+        }
+        100% {
+            background-position: 0% 50%
+        }
+    }
+
+    table {
+        width: 90%;
+        border-collapse: collapse;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        background-color: rgba(255, 255, 255, 0.9);
+        border-spacing: 0;
+        border-collapse: collapse;
+        z-index: 1;
+    }
+
+    td,
+    th {
+        cursor: pointer;
+        padding: 10px;
+        position: relative;
+        color: #000;
+        border: solid 1px #F2F2F2
+    }
+
+    td {
+        font-family: Helvetica;
+        font-weight: 100;
+        text-transform: uppercase;
+    }
+
+    th {
+        text-align: left;
+        color: #FFF;
+        font-family: Helvetica;
+        font-weight: 200;
+    }
+
+    tbody tr:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    td:hover::after {
+        background-color: rgba(0, 0, 0, 0.9);
+        content: '\00a0';
+        height: 10000px;
+        left: 0;
+        position: absolute;
+        top: -5000px;
+        width: 100%;
+        z-index: -1;
+    }
+
+    tr:nth-child(even) {
+        background-color: rgba(0, 0, 0, 0.1)
+    }
+
+    .zoom {
+        transition: transform .2s;
+    }
+
+    .zoom:hover {
+        -ms-transform: scale(.9);
+        /* IE 9 */
+        -webkit-transform: scale(.9);
+        /* Safari 3-8 */
+        transform: scale(.9);
+    }
+    /* unvisited link */
+
+    a:link {
+        color: #000000;
+    }
+    /* visited link */
+
+    a:visited {
+        color: #000000;
+    }
+    /* mouse over link */
+
+    a:hover {
+        color: #00a5f9;
+    }
+    /* selected link */
+
+    a:active {
+        color: #1ABFFF;
+    }
+    /* single cell highlight colors for color palette column */
+
+    td.teal:hover {
+        background-color: rgba(0, 128, 128, 0.2);
+        color: white;
+    }
+
+    td.red:hover {
+        background-color: rgba(255, 0, 0, 0.2);
+        color: white;
+    }
+
+    td.purple:hover {
+        background-color: rgba(128, 0, 128, 0.2);
+        color: white;
+    }
+
+    td.blue:hover {
+        background-color: rgba(0, 0, 255, 0.2);
+        color: white;
+    }
+
+    td.titanium:hover {
+        background-color: rgba(182, 175, 169, 0.2);
+
+        color: white;
+    }
+
+    .wrapper {
+        width: 800%;
+
+    }
+
+    @media(max-width:992px) {
+        .wrapper {
+            width: 100%;
+        }
+    }
+
+    .panel-heading {
+        padding: 0;
+        border: 0;
+    }
+
+    .panel-title>a,
+    .panel-title>a:active {
+        display: block;
+        padding: 10px;
+        color: #555;
+        font-size: 16px;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    .panel-heading a:before {
+        font-family: 'Glyphicons Halflings';
+        content: "\e114";
+        float: right;
+        transition: all 0.5s;
+    }
+
+    .panel-heading.active a:before {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
+
+
+    }
+</style>
+
+<body>
+
+    <div class="zoll-container">
+        <center><img src="https://files.radcliffecardiology.com/s3fs-public/Zoll_white.png" alt="zoll-medical-logo" width="216" height="121"></center>
+        <center>
+            <div class="panel panel-default" style="max-width: 400px; border-radius: 0px">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          supported browsers
+        </a>
+      </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        chrome
+                        <br> firefox
+                        <br> internet explorer
+                        <br> safari
+                        <br> edge
+                        <br> opera
+                    </div>
+                </div>
+            </div>
+        </center>
+    </div>
+    <p>
+        <br>
+    </p>
+    <center>
+        <table>
+            <thead>
+                <!-- head -->
+                <tr>
+                    <th>INSTANCE</th>
+                    <th>TYPE</th>
+                    <th>LAST REFRESHED</th>
+                    <th>COLOR PALETTE</th>
+                    <th>CLIENT JAVA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- spacer -->
+                <tr>
+                    <th colspan="5"></th>
+                </tr>
+                <!-- ZOLL -->
+                <tr>
+                  <td style="text-decoration:underline;"><a href="http://oraclevmb.zollmed.com:8010/OA_HTML/AppsLocalLogin.jsp" target="blank">
+                ZOLL</a>
+                  </td>
+                  <td>Production</td>
+                  <td>N/A</td>
+                  <td class="teal">Teal</td>
+                  <td>Java 8 Update 121</td>
+                </tr>
+                <!-- UAT -->
+                <tr>
+                  <td style="text-decoration:underline;"><a href="http://oraclevm1.zollmed.com:8060/OA_HTML/AppsLocalLogin.jsp" target="blank">
+                UAT</a>
+                  </td>
+                  <td>Cloned from ZOLL</td>
+                  <td>1-Jul-19</td>
+                  <td class="red">Red</td>
+                  <td>Java 8 Update 121</td>
+                </tr>
+                <!-- DEV1 -->
+                <tr>
+                  <td style="text-decoration:underline;"><a href="http://oraclevm2.zollmed.com:8030/OA_HTML/AppsLocalLogin.jsp" target="blank">
+                DEV1</a>
+                  </td>
+                  <td>Cloned from ZOLL</td>
+                  <td>2-may-19</td>
+                  <td class="purple">Purple</td>
+                  <td>Java 8 Update 121</td>
+                </tr>
+                <!-- DEV2 -->
+                <tr>
+                  <td style="text-decoration:underline;"><a href="http://oraclevm1.zollmed.com:8050/OA_HTML/AppsLocalLogin.jsp" target="blank">
+                DEV2 (test)</a>
+                  </td>
+                  <td>Cloned from ZOLL</td>
+                  <td>8-Oct-18</td>
+                  <td class="titanium">Titanium</td>
+                  <td>Java 8 Update 121</td>
+                </tr>
+                <!-- GOLD -->
+                <tr>
+                  <td style="text-decoration:underline;"><a href="http://oraclevm1.zollmed.com:8040/OA_HTML/AppsLocalLogin.jsp" target="blank">
+                GOLD</a>
+                  </td>
+                  <td>Cloned from ZOLL</td>
+                  <td>1-Nov-18</td>
+                  <td class="titanium">Titanium</td>
+                  <td>Java 8 Update 121</td>
+                </tr>
+                <!-- DAILY -->
+                <tr>
+                  <td style="text-decoration:underline;"><a href="http://oraclevm2.zollmed.com:8020/oa_servlets/AppsLogin" target="blank">
+                DAILY</a>
+                  </td>
+                  <td>Cloned from ZOLL</td>
+                  <td>Each Saturday</td>
+                  <td class="red">Red</td>
+                  <td>Java 8 Update 121</td>
+                </tr>
+                <!-- WINDOWS SERVERS -->
+                <tr>
+                    <td><a href="javascript:runProgram()">WINDOWS SERVERS</a></a>
+                    </td>
+                    <td>Remote desktop connection </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <!-- spacer -->
+                <tr>
+                    <th colspan="5"></th>
+                </tr>
+                <!-- AZM -->
+                <tr>
+                  <td style="text-decoration:underline;"><a href="http://oravmapp1.zollmed.com:8072/OA_HTML/AppsLocalLogin.jsp" target="blank">
+                AZM1</a>
+                  </td>
+                  <td>Production (China & Japan)</td>
+                  <td>N/A</td>
+                  <td class="blue">Blue</td>
+                  <td>Java 8 Update 121</td>
+                </tr>
+                <!-- INT1 -->
+                <tr>
+                  <td style="text-decoration:underline;"><a href="http://oravmapp2.zollmed.com:8068/OA_HTML/AppsLocalLogin.jsp" target="blank">
+                INT1</a>
+                  </td>
+                  <td>Cloned from AZM1</td>
+                  <td>19-Jul-19</td>
+                  <td class="titanium">Titanium</td>
+                  <td>Java 8 Update 121</td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+
+</body>
+<script>
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+<script type="text/javascript">
+    $('.panel-collapse').on('show.bs.collapse', function() {
+        $(this).siblings('.panel-heading').addClass('active');
+    });
+
+    $('.panel-collapse').on('hide.bs.collapse', function() {
+        $(this).siblings('.panel-heading').removeClass('active');
+    });
+</script>
+
+</html>
